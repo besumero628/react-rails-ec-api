@@ -36,6 +36,7 @@ gem "kaminari"
 gem "date_validator"
 gem "valid_email2"
 gem "nokogiri"
+gem 'carrierwave'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
