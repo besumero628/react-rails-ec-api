@@ -1,11 +1,15 @@
 class V1::UsersController < ApplicationController
   def index
-    render json: { users: User.all }
+    render json: User.all
   end
 
   def create
     user = User.new(user_params)
-    user.save
+    if user.save
+      render json: user
+    else
+      render json: user.errors
+    end
   end
 
   def destroy
@@ -16,12 +20,12 @@ class V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:family_name, 
-                  :family_name_kana, 
-                  :given_name, 
-                  :given_name_kana,
-                  :email,
-                  :image
-                )
+    params.require(:user).permit(:family_name, 
+                                :family_name_kana, 
+                                :given_name, 
+                                :given_name_kana,
+                                :email,
+                                :image
+                              )
   end
 end
