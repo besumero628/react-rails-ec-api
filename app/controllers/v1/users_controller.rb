@@ -8,6 +8,12 @@ class V1::UsersController < ApplicationController
     user.save
   end
 
+  def destroy
+    user = User.find(params[:id])
+    post.destroy!
+    render json; user
+  end
+
   private
   def user_params
     params.permit(:family_name, 
